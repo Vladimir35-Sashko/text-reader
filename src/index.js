@@ -1,5 +1,10 @@
 import Notiflix from 'notiflix';
 const button = document.querySelector('.process-btn');
+const maxNumber = document.querySelector('#maxValue');
+const minNumber = document.querySelector('#minValue');
+const average = document.querySelector('#averageValue');
+const median = document.querySelector('#medianValue');
+const loader = document.querySelector('#loader');
 button.addEventListener('click', onClick);
 
 function onClick() {
@@ -10,6 +15,8 @@ function onClick() {
     Notiflix.Notify.warning('Будь ласка, виберіть файл');    
     return;
   }
+
+  loader.style.display = 'block';
 
   const reader = new FileReader();
   reader.onload = function (event) {
@@ -53,11 +60,12 @@ function onClick() {
       medianValue = numbers[(numbers.length - 1) / 2];
     }
 
-    document.getElementById('maxValue').textContent = maxValue;
-    document.getElementById('minValue').textContent = minValue;
-    document.getElementById('averageValue').textContent =
-      averageValue.toFixed(2);
-    document.getElementById('medianValue').textContent = medianValue.toFixed(2);
+    maxNumber.textContent = maxValue;
+    minNumber.textContent = minValue;
+    average.textContent = averageValue.toFixed(2);
+    median.textContent = medianValue.toFixed(2);
+
+    loader.style.display = 'none';
   };
 
   reader.readAsText(file);
