@@ -12,7 +12,7 @@ function onClick() {
   const file = input.files[0];
 
   if (!file) {
-    Notiflix.Notify.warning('Будь ласка, виберіть файл');    
+    Notiflix.Notify.warning('Будь ласка, виберіть файл');
     return;
   }
 
@@ -27,14 +27,14 @@ function onClick() {
     for (const num of numbers) {
       if (isNaN(num)) {
         isValid = false;
+        errorFile();
         break;
       }
     }
 
     if (!isValid) {
-      Notiflix.Notify.failure(
-        'Файл повинен містити тільки числа.'
-      );
+      errorFile();
+      Notiflix.Notify.failure('Файл повинен містити тільки числа.');
       return;
     }
 
@@ -69,4 +69,11 @@ function onClick() {
   };
 
   reader.readAsText(file);
+}
+function errorFile() {
+  loader.style.display = 'none';
+  maxNumber.textContent = '';
+  minNumber.textContent = '';
+  average.textContent = '';
+  median.textContent = '';
 }
