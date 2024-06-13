@@ -4,11 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
+    <link rel="stylesheet" href="./style.css">
     
   </head>
   <body>
-    <h1>Example title</h1>
+    <div class="container">
+      <input class="input" type="file" id="fileInput">      
+      <p class="text">Найбільше число: <span class="text-value" id="maxValue"></span></p>
+      <p class="text">Найменше число: <span class="text-value" id="minValue"></span></p>
+      <p class="text">Середнє арифметичне: <span class="text-value" id="averageValue"></span></p>
+      <p class="text">Медіана: <span class="text-value" id="medianValue"></span></p>
+      <button class="process-btn">Обробити файл</button>
+    </div>  
    <script type="module" src="./index.js"></script>
   </body>
 </html>
